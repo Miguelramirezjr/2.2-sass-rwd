@@ -29,28 +29,12 @@ body {
     margin-top: 130px;
 }
 
-.box1 {
-    @include span-columns(3);
-    text-align: center;
-    border: red solid;
+ul{
+    list-style: none;
 }
 
-.box2 {
-    @include span-columns(3);
-    text-align: center;
-    border: red solid;
-}
-
-.box3 {
-    @include span-columns(3);
-    text-align: center;
-    border: red solid;
-}
-
-.box4 {
-    @include span-columns(3);
-    text-align: center;
-    border: red solid;
+li {
+    border: 4px solid red;
 }
 
 .hero {
@@ -61,10 +45,15 @@ body {
     margin-top: 50px;
     background-image: url("../images/top-image.png");
     background-size: cover;
-}
 
-.hero peralta-logo {
-    height: 418px;
-    width: 252px;
-    background-image: url("../images/peralta-logo.png");
+    &::before {
+    content: "";
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(../images/grid.png);
+    }
 }
