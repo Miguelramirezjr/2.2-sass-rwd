@@ -24,15 +24,35 @@ body {
 .top-nav-section {
     max-width: 1090px;
     color: white;
-    background-color: red;
     background-position: center;
     @include outer-container;
-    margin-top: 50px;
+    margin-top: 130px;
 }
 
-.boxes {
+.box1 {
     border: 2px green;
     @include span-columns(3);
     text-align: center;
+    border: yellow solid;
+}
 
+.box2 {
+    border: 2px green;
+    @include span-columns(3);
+    text-align: center;
+    border: yellow solid;
+}
+
+.box3 {
+    border: 2px green;
+    @include span-columns(3);
+    text-align: center;
+    border: yellow solid;
+}
+
+.box4 {
+    border: 2px green;
+    @include span-columns(3);
+    text-align: center;
+    border: yellow solid;
 }

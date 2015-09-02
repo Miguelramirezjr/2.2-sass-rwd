@@ -194,23 +194,56 @@ body {
 .top-nav-section {
   max-width: 1090px;
   color: white;
-  background-color: red;
   background-position: center;
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px; }
+  margin-top: 130px; }
   .top-nav-section::after {
     clear: both;
     content: "";
     display: table; }
 
-.boxes {
+.box1 {
   border: 2px green;
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 23.23176%;
-  text-align: center; }
-  .boxes:last-child {
+  text-align: center;
+  border: yellow solid; }
+  .box1:last-child {
+    margin-right: 0; }
+
+.box2 {
+  border: 2px green;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  text-align: center;
+  border: yellow solid; }
+  .box2:last-child {
+    margin-right: 0; }
+
+.box3 {
+  border: 2px green;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  text-align: center;
+  border: yellow solid; }
+  .box3:last-child {
+    margin-right: 0; }
+
+.box4 {
+  border: 2px green;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  text-align: center;
+  border: yellow solid; }
+  .box4:last-child {
     margin-right: 0; }
