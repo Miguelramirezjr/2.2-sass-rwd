@@ -30,29 +30,41 @@ body {
 }
 
 .box1 {
-    border: 2px green;
     @include span-columns(3);
     text-align: center;
-    border: yellow solid;
+    border: red solid;
 }
 
 .box2 {
-    border: 2px green;
     @include span-columns(3);
     text-align: center;
-    border: yellow solid;
+    border: red solid;
 }
 
 .box3 {
-    border: 2px green;
     @include span-columns(3);
     text-align: center;
-    border: yellow solid;
+    border: red solid;
 }
 
 .box4 {
-    border: 2px green;
     @include span-columns(3);
     text-align: center;
-    border: yellow solid;
+    border: red solid;
+}
+
+.hero {
+    height: 359px;
+    width: 1095px;
+    border: black solid;
+    @include outer-container;
+    margin-top: 50px;
+    background-image: url("../images/top-image.png");
+    background-size: cover;
+}
+
+.hero peralta-logo {
+    height: 418px;
+    width: 252px;
+    background-image: url("../images/peralta-logo.png");
 }

@@ -205,45 +205,61 @@ body {
     display: table; }
 
 .box1 {
-  border: 2px green;
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 23.23176%;
   text-align: center;
-  border: yellow solid; }
+  border: red solid; }
   .box1:last-child {
     margin-right: 0; }
 
 .box2 {
-  border: 2px green;
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 23.23176%;
   text-align: center;
-  border: yellow solid; }
+  border: red solid; }
   .box2:last-child {
     margin-right: 0; }
 
 .box3 {
-  border: 2px green;
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 23.23176%;
   text-align: center;
-  border: yellow solid; }
+  border: red solid; }
   .box3:last-child {
     margin-right: 0; }
 
 .box4 {
-  border: 2px green;
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 23.23176%;
   text-align: center;
-  border: yellow solid; }
+  border: red solid; }
   .box4:last-child {
     margin-right: 0; }
+
+.hero {
+  height: 359px;
+  width: 1095px;
+  border: black solid;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-image: url("../images/top-image.png");
+  background-size: cover; }
+  .hero::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.hero peralta-logo {
+  height: 418px;
+  width: 252px;
+  background-image: url("../images/peralta-logo.png"); }
