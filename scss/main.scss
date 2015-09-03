@@ -1,6 +1,7 @@
 @import 'reset';
 @import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
 $grid-colums: 12;
+$gutter: em(5);
 @import '../bower_components/neat/app/assets/stylesheets/neat';
 
 $primary-color: RGBA(96, 96, 96, 1); // GRAY BACKGROUND COLOR //
@@ -9,6 +10,9 @@ $third-color: RGBA(68, 88, 151, 1); // FACEBOOK //
 $forth-color: RGBA(204, 144, 50, 1); // RSS FEED //
 $fith-color: RGBA(105, 141, 199, 1); // TWITTER //
 $sixth-color: RGBA(178, 56, 45, 1); // YOUTUBE //
+$seventh-color: RGBA(254, 254, 254, 1); // PARAGRAPHS //
+$eigth-color: RGBA(160, 160, 160, 1); // PARAGRAPH BODY TEXT COLOR //
+$ninth-color: RGBA(51, 51, 47, 1); // MAIN PARAGRAPH HEADING COLOR //
 
 
 $tablet: new-breakpoint(max-width 1090px 10);
@@ -16,7 +20,6 @@ $mobile: new-breakpoint(max-width 740px 5);
 
 body {
     background-image: url("../images/bg.jpg");
-    margin: 0 auto;
     background-repeat: no-repeat center center;
     max-width: 100%;
 }
@@ -26,25 +29,53 @@ body {
     color: white;
     background-position: center;
     @include outer-container;
-    margin-top: 130px;
+    margin-top: 100px;
 }
 
 ul{
     list-style: none;
 }
 
-li {
-    border: 4px solid red;
+li p {
+    color: white;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.box1,
+.box2,
+.box3,
+.box4 {
+    height: 48px;
+    width: 250px;
+    background-color: $seconday-color;
+}
+
+.box1 {
+    @include span-columns(1-3);
+}
+
+.box2 {
+    @include span-columns(3-6);
+}
+
+.box3 {
+    @include span-columns(6-9);
+}
+
+.box4 {
+    @include span-columns(9-12);
 }
 
 .hero {
     height: 359px;
     width: 1095px;
-    border: black solid;
+    border: white 8px solid;
     @include outer-container;
-    margin-top: 50px;
+    margin-top: 20px;
     background-image: url("../images/top-image.png");
     background-size: cover;
+    position: relative;
 
     &::before {
     content: "";
@@ -56,4 +87,76 @@ li {
     left: 0;
     background-image: url(../images/grid.png);
     }
+}
+
+img {
+    @include span-columns(5);
+    position: relative;
+    padding-top: 50px;
+    padding-left: 20px;
+    z-index: 1;
+}
+
+.paragraphs {
+    width: 1027px;
+    height: 357px;
+    @include outer-container;
+    margin-top: 60px;
+}
+
+.para1,
+.para2,
+.para3 {
+    @include span-columns(4);
+    height: 353px;
+    width: 336px;
+    background-color: $seventh-color;
+}
+
+.headline1 {
+    color: $ninth-color;
+    font-size: 1.5em;
+    text-align: left;
+    padding-top: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.date {
+    color: $eigth-color;
+    font-size: 0.9em;
+    padding-top: 10px;
+    text-align: left;
+    padding-left: 45px;
+}
+
+.content {
+    color: $eigth-color;
+    font-size: 0.9em;
+    text-align: left;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+.read-more {
+    color: $seconday-color;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.skaters {
+    height: 478px;
+    width: 1027px;
+    border: black solid;
+    @include outer-container;
+    margin-top: 50px;
+}
+
+.skaters1 {
+    height: 234px;
+    width: 335px;
+    background-position: center;
+    @include span-columns(1);
+    border: red solid;
 }
