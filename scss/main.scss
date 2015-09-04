@@ -1,7 +1,8 @@
 @import 'reset';
 @import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
+$max-width: 1024px !global;
 $grid-colums: 12;
-$gutter: em(5);
+$gutter: em(10); !global;
 @import '../bower_components/neat/app/assets/stylesheets/neat';
 
 $primary-color: RGBA(96, 96, 96, 1); // GRAY BACKGROUND COLOR //
@@ -15,31 +16,26 @@ $eigth-color: RGBA(160, 160, 160, 1); // PARAGRAPH BODY TEXT COLOR //
 $ninth-color: RGBA(51, 51, 47, 1); // MAIN PARAGRAPH HEADING COLOR //
 
 
-$tablet: new-breakpoint(max-width 1090px 10);
-$mobile: new-breakpoint(max-width 740px 5);
+$tablet: new-breakpoint(max-width 1090px min-width 768px);
+$mobile: new-breakpoint(max-width 767px);
 
 body {
+     @include outer-container;
     background-image: url("../images/bg.jpg");
     background-repeat: no-repeat center center;
-    max-width: 100%;
-}
-
-.top-nav-section {
-    max-width: 1090px;
-    color: white;
-    background-position: center;
-    @include outer-container;
-    margin-top: 100px;
 }
 
 ul{
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 li p {
     color: white;
     text-align: center;
     padding-top: 5%;
+    margin: 0
 }
 
 .box1,
@@ -47,31 +43,34 @@ li p {
 .box3,
 .box4 {
     height: 48px;
-    width: 250px;
     background-color: $seconday-color;
+
+@include media($mobile) {
+@include span-columns(6 of 12);
+@include omega(2n);
+margin-bottom: 12px;
+    }
 }
 
 .box1 {
-    @include span-columns(1-3);
+    @include span-columns(1 of 3);
 }
 
 .box2 {
-    @include span-columns(3-6);
+    @include span-columns(3 of 6);
 }
 
 .box3 {
-    @include span-columns(6-9);
+    @include span-columns(6 of 9);
 }
 
 .box4 {
-    @include span-columns(9-12);
+    @include span-columns(9 of 12);
 }
 
 .hero {
     height: 359px;
-    width: 1095px;
     border: white 8px solid;
-    @include outer-container;
     margin-top: 20px;
     background-image: url("../images/top-image.png");
     background-size: cover;
@@ -98,7 +97,6 @@ img {
 }
 
 .paragraphs {
-    width: 1027px;
     height: 357px;
     @include outer-container;
     margin-top: 60px;
@@ -109,7 +107,6 @@ img {
 .para3 {
     @include span-columns(4);
     height: 353px;
-    width: 336px;
     background-color: $seventh-color;
 }
 
@@ -146,17 +143,28 @@ img {
 }
 
 .skaters {
-    height: 478px;
-    width: 1027px;
-    border: black solid;
-    @include outer-container;
+    height: 234px;
     margin-top: 50px;
+    @include span-columns (4);
 }
 
-.skaters1 {
-    height: 234px;
-    width: 335px;
-    background-position: center;
-    @include span-columns(1);
-    border: red solid;
+.skater2 {
+    height: 475px;
+    float: right;
+    @include omega;
+}
+
+.skater3 {
+  @include omega;
+}
+.skater4 {
+    margin-top: 10px;
+    @include span-columns (8);
+    @include omega;
+}
+
+.skaters {
+  @include media($mobile) {
+    @include span-columns(12 of 12);
+  }
 }
