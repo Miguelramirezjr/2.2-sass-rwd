@@ -1,7 +1,8 @@
 @import 'reset';
 @import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
-$max-width: 1024px;
 @import '../bower_components/neat/app/assets/stylesheets/neat';
+
+$max-width: 1024px;
 
 $primary-color: RGBA(96, 96, 96, 1); // GRAY BACKGROUND COLOR //
 $seconday-color: RGBA(179, 51, 46, 1); // RED COLOR //
@@ -14,13 +15,15 @@ $eigth-color: RGBA(160, 160, 160, 1); // PARAGRAPH BODY TEXT COLOR //
 $ninth-color: RGBA(51, 51, 47, 1); // MAIN PARAGRAPH HEADING COLOR //
 
 
-$tablet: new-breakpoint(max-width 1090px min-width 768px);
+$tablet: new-breakpoint(max-width 1024px min-width 768px);
 $mobile: new-breakpoint(max-width 767px);
 
 body {
-    background-image: url("../images/bg.jpg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-size: 100%;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/bg-1.jpg");
+
 }
 
 ul{
@@ -33,7 +36,7 @@ li p {
      color: white;
      text-align: center;
      padding-top: 5%;
-     margin: 0
+     margin: 0;
 }
 
 %max-width {
@@ -58,16 +61,20 @@ li p {
         display: inline-block;
         width: 100%;
         @include span-columns(10);
-        width: 1024px;
+        width: $max-width;
 
         .box {
             @include span-columns(3);
             height: 48px;
+            text-transform: uppercase;
+            font-family: "Cabin", "sans-serif";
+            border-bottom: 5px solid $primary-color;
             background-color: $seconday-color;
+            cursor: pointer;
 
             @include media($mobile) {
                 @include span-columns(6 of 12);
-                @include omega(2n);
+                @include omega(1n);
                 margin-bottom: 12px;
             }
         }
@@ -75,21 +82,20 @@ li p {
 }
 
 .hero {
-     height: 359px;
-     border: white 8px solid;
-     margin-top: 40px;
-     background-image: url("../images/top-image.png");
-     background-size: cover;
-     position: relative;
+    height: 359px;
+    border: white 8px solid;
+    margin-top: 40px;
+    background-image: url("../images/top-image.png");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    position: relative;
 
     &::before {
         content: "";
         position: absolute;
         background-repeat: no-repeat;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        width: 100%;
+        height: 100%;
         background-image: url(../images/grid.png);
     }
 
@@ -104,16 +110,20 @@ li p {
 
 .paragraphs {
     height: 357px;
-     @include outer-container;
-      margin-top: 70px;
+    margin-top: 70px;
+    // @include outer-container;
+    // @include span-columns(12);
+
 }
 
 .para1,
 .para2,
 .para3 {
-     @include span-columns(4);
-      height: 353px;
-      background-color: $seventh-color;
+     @include span-columns(4 of 12);
+     height: 353px;
+     background-color: $seventh-color;
+     text-overflow: ellipsis;
+     overflow: hidden;
 }
 
 .headline1 {
@@ -146,6 +156,7 @@ li p {
     color: $seconday-color;
     text-align: center;
     padding-top: 30px;
+    cursor: pointer;
 }
 
 .skater {
@@ -156,7 +167,7 @@ li p {
         @include  span-columns(8);
         @include outer-container;
 
-        @media all and (max-width: 740px) {
+        @media all and (max-width: 767px) {
             @include span-columns(12);
         }
 
@@ -165,18 +176,41 @@ li p {
             padding: 15% 0;
             background-position: center;
             background-size: 100%;
-            background-repeat: no-repeat;
-            overflow: hidden;
+
 
             &.mountain {
                 background-image: url("../images/sk8er-4.png");
+                border:5px solid #fff;
+                background-size: cover;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                margin-top: 15px;
+
+                .lance-h1 {
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-size: 34px;
+                    text-align: center;
+                }
             }
 
             &.mullen {
                 background-image: url("../images/sk8er-3.png");
+                border:5px solid #fff;
+                background-size: cover;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                margin-top: 15px;
+
+                .rodney-h1 {
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-size: 35px;
+                    text-align: center;
+                }
             }
 
-            @media all and (max-width: 740px) {
+            @media all and (max-width: 767px) {
                 @include span-columns(12);
 
                 img {
@@ -187,13 +221,21 @@ li p {
 
         .steve-box {
             background-image: url("../images/sk8er-1.png");
-            padding: 15% 0;
+            padding: 13%;
             background-position: center;
             background-size: 100%;
             background-repeat: no-repeat;
             overflow: hidden;
+            margin-top: 15px;
+            border:5px solid #fff;
             @include span-columns(12);
 
+            .steve-h1 {
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 35px;
+                text-align: center;
+            }
 
         }
     }
@@ -202,12 +244,22 @@ li p {
         background-image: url("../images/sk8er-2.png");
         padding: 20% 0;
         background-position: center right, center;
+        background-size: cover;
         background-repeat: no-repeat;
+        border:5px solid #fff;
+        margin-top: 15px;
         @include span-columns(4);
         @include outer-container;
 
+        .tommy-h1 {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 35px;
+            text-align: center;
+        }
 
-        @media all and (max-width: 740px) {
+
+        @media all and (max-width: 767px) {
             @include span-columns(12);
         }
     }
@@ -216,7 +268,7 @@ li p {
 
 .board-container {
     height: 296px;
-    width: 1027px;
+    width: $max-width;
     @include outer-container;
 
 }

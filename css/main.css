@@ -13,9 +13,7 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
-  vertical-align: baseline;
-  background: transparent; }
+  outline: 0; }
 
 html, body {
   font-size: 100%; }
@@ -160,9 +158,7 @@ table {
 html {
   box-sizing: border-box; }
 
-*,
-*::after,
-*::before {
+*, *::after, *::before {
   box-sizing: inherit; }
 
 body:before {
@@ -176,7 +172,7 @@ body:before {
   height: 100%;
   left: 0;
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: 68em;
   opacity: 0.4;
   pointer-events: none;
   position: fixed;
@@ -185,9 +181,10 @@ body:before {
   z-index: -1; }
 
 body {
-  background-image: url("../images/bg.jpg");
   background-repeat: no-repeat;
-  background-position: center; }
+  background-size: 100%;
+  background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/bg-1.jpg"); }
 
 ul {
   list-style: none;
@@ -232,7 +229,11 @@ li p {
       margin-right: 2.35765%;
       width: 23.23176%;
       height: 48px;
-      background-color: RGBA(179, 51, 46, 1); }
+      text-transform: uppercase;
+      font-family: "Cabin", "sans-serif";
+      border-bottom: 5px solid RGBA(96, 96, 96, 1);
+      background-color: RGBA(179, 51, 46, 1);
+      cursor: pointer; }
       .top-nav-boxes .box:last-child {
         margin-right: 0; }
       @media screen and (max-width: 767px) {
@@ -244,9 +245,9 @@ li p {
           margin-bottom: 12px; }
           .top-nav-boxes .box:last-child {
             margin-right: 0; }
-          .top-nav-boxes .box:nth-child(2n) {
+          .top-nav-boxes .box:nth-child(1n) {
             margin-right: 0; }
-          .top-nav-boxes .box:nth-child(2n+1) {
+          .top-nav-boxes .box:nth-child(1n+1) {
             clear: left; } }
 
 .hero {
@@ -254,16 +255,15 @@ li p {
   border: white 8px solid;
   margin-top: 40px;
   background-image: url("../images/top-image.png");
-  background-size: cover;
+  background-size: 120%;
+  background-repeat: no-repeat;
   position: relative; }
   .hero::before {
     content: "";
     position: absolute;
     background-repeat: no-repeat;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url(../images/grid.png); }
   .hero img {
     float: left;
@@ -279,14 +279,7 @@ li p {
 
 .paragraphs {
   height: 357px;
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 70px; }
-  .paragraphs::after {
-    clear: both;
-    content: "";
-    display: table; }
 
 .para1,
 .para2,
@@ -296,7 +289,9 @@ li p {
   margin-right: 2.35765%;
   width: 31.76157%;
   height: 353px;
-  background-color: RGBA(254, 254, 254, 1); }
+  background-color: RGBA(254, 254, 254, 1);
+  text-overflow: ellipsis;
+  overflow: hidden; }
   .para1:last-child,
   .para2:last-child,
   .para3:last-child {
@@ -328,7 +323,8 @@ li p {
 .read-more {
   color: RGBA(179, 51, 46, 1);
   text-align: center;
-  padding-top: 30px; }
+  padding-top: 30px;
+  cursor: pointer; }
 
 .skater {
   max-width: 1024px;
@@ -353,7 +349,7 @@ li p {
       clear: both;
       content: "";
       display: table; }
-    @media all and (max-width: 740px) {
+    @media all and (max-width: 767px) {
       .skater .left-side-box {
         float: left;
         display: block;
@@ -368,16 +364,34 @@ li p {
       width: 48.82117%;
       padding: 15% 0;
       background-position: center;
-      background-size: 100%;
-      background-repeat: no-repeat;
-      overflow: hidden; }
+      background-size: 100%; }
       .skater .left-side-box .item:last-child {
         margin-right: 0; }
       .skater .left-side-box .item.mountain {
-        background-image: url("../images/sk8er-4.png"); }
+        background-image: url("../images/sk8er-4.png");
+        border: 5px solid #fff;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        margin-top: 15px; }
+        .skater .left-side-box .item.mountain .lance-h1 {
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 34px;
+          text-align: center; }
       .skater .left-side-box .item.mullen {
-        background-image: url("../images/sk8er-3.png"); }
-      @media all and (max-width: 740px) {
+        background-image: url("../images/sk8er-3.png");
+        border: 5px solid #fff;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        margin-top: 15px; }
+        .skater .left-side-box .item.mullen .rodney-h1 {
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 35px;
+          text-align: center; }
+      @media all and (max-width: 767px) {
         .skater .left-side-box .item {
           float: left;
           display: block;
@@ -389,22 +403,32 @@ li p {
             width: 100%; } }
     .skater .left-side-box .steve-box {
       background-image: url("../images/sk8er-1.png");
-      padding: 15% 0;
+      padding: 13%;
       background-position: center;
       background-size: 100%;
       background-repeat: no-repeat;
       overflow: hidden;
+      margin-top: 15px;
+      border: 5px solid #fff;
       float: left;
       display: block;
       margin-right: 2.35765%;
       width: 100%; }
       .skater .left-side-box .steve-box:last-child {
         margin-right: 0; }
+      .skater .left-side-box .steve-box .steve-h1 {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 35px;
+        text-align: center; }
   .skater .tommy-box {
     background-image: url("../images/sk8er-2.png");
     padding: 20% 0;
     background-position: center right, center;
+    background-size: cover;
     background-repeat: no-repeat;
+    border: 5px solid #fff;
+    margin-top: 15px;
     float: left;
     display: block;
     margin-right: 2.35765%;
@@ -418,7 +442,12 @@ li p {
       clear: both;
       content: "";
       display: table; }
-    @media all and (max-width: 740px) {
+    .skater .tommy-box .tommy-h1 {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 35px;
+      text-align: center; }
+    @media all and (max-width: 767px) {
       .skater .tommy-box {
         float: left;
         display: block;
@@ -429,7 +458,7 @@ li p {
 
 .board-container {
   height: 296px;
-  width: 1027px;
+  width: 1024px;
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto; }
