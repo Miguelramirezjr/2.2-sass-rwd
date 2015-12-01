@@ -282,3 +282,19 @@ li p {
     }
 
 }
+
+.contact-container {
+    height: 260px;
+    margin-top: 15px;
+    width: $max-width;
+    background-color: #fff;
+    @include outer-container;
+    @include span-columns(12);
+
+}
+
+.pure-form {
+    float: right;
+    margin-right: 25px;
+    width: 350px;
+}
