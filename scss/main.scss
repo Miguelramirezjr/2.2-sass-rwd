@@ -11,11 +11,10 @@ $mobile: new-breakpoint(max-width 640px);
 $tablet: new-breakpoint(max-width 1024px min-width 641px);
 
 $primary-color: RGBA(96, 96, 96, 1); // GRAY BACKGROUND COLOR //
-$seconday-color: RGBA(179, 51, 46, 1); // RED COLOR //
+$secondary-color: RGBA(179, 51, 46, 1); // RED COLOR //
 $third-color: RGBA(68, 88, 151, 1); // FACEBOOK //
-$forth-color: RGBA(204, 144, 50, 1); // RSS FEED //
-$fith-color: RGBA(105, 141, 199, 1); // TWITTER //
-$sixth-color: RGBA(178, 56, 45, 1); // YOUTUBE //
+$forth-color: RGBA(211,67,49,1); // GOOGLE PLUS //
+$fifth-color: RGBA(105, 141, 199, 1); // TWITTER //
 $seventh-color: RGBA(254, 254, 254, 1); // PARAGRAPHS //
 $eigth-color: RGBA(160, 160, 160, 1); // PARAGRAPH BODY TEXT COLOR //
 $ninth-color: RGBA(51, 51, 47, 1); // MAIN PARAGRAPH HEADING COLOR //
@@ -25,7 +24,6 @@ body {
     background-size: 100%;
     background-size: cover;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/bg-1.jpg");
-
 }
 
 ul{
@@ -52,7 +50,6 @@ li p {
 }
 
 .top-nav {
-    @include outer-container;
     margin-top: 85px;
 
     &-nav {
@@ -63,7 +60,6 @@ li p {
     &-boxes {
         display: inline-block;
         width: 100%;
-        @include span-columns(10);
         width: $max-width;
 
         .box {
@@ -72,13 +68,13 @@ li p {
             text-transform: uppercase;
             font-family: "Cabin", "sans-serif";
             border-bottom: 5px solid $primary-color;
-            background-color: $seconday-color;
+            background-color: $secondary-color;
             cursor: pointer;
 
             @include media($mobile) {
-                @include span-columns(6 of 12);
                 @include omega(1n);
                 margin-bottom: 12px;
+                margin-left: 180px;
             }
         }
     }
@@ -103,20 +99,21 @@ li p {
     }
 
     img {
-       @include span-columns(5);
         position: relative;
         padding-top: 50px;
         padding-left: 20px;
         z-index: 1;
+
+        @include media($mobile) {
+            margin-left: 60px;
+        }
     }
 }
 
 .paragraphs {
     height: 357px;
     margin-top: 70px;
-    // @include outer-container;
-    // @include span-columns(12);
-
+    border-bottom: 5px solid $primary-color;
 }
 
 .para1,
@@ -127,6 +124,12 @@ li p {
      background-color: $seventh-color;
      text-overflow: ellipsis;
      overflow: hidden;
+
+     @include media($mobile) {
+         @include span-columns(11 of 12);
+         margin-bottom: 15px;
+         margin-left: 20px;
+     }
 }
 
 .headline1 {
@@ -156,88 +159,102 @@ li p {
 }
 
 .read-more {
-    color: $seconday-color;
+    font-family: "Cabin", "sans-serif";
+    color: $secondary-color;
     text-align: center;
     padding-top: 30px;
     cursor: pointer;
 }
 
 .skater {
+    height: 622px;
      @include outer-container;
-     @include omega;
 
     .left-side-box {
-        @include  span-columns(8);
-        @include outer-container;
+        // @include span-columns(4 of 12);
+        // @include  span-columns(11);
+        // @include outer-container;
 
-        @media all and (max-width: 640px) {
-            @include span-columns(12);
-        }
+        // @media all and (max-width: 640px) {
+        //     @include span-columns(12);
+        // }
 
         .item {
-            @include span-columns(6);
-            padding: 15% 0;
-            background-position: center;
-            background-size: 100%;
+            // @include span-columns(12);
+            // padding: 15% 0;
+            // background-position: center;
+            // background-size: 100%;
 
 
             &.mountain {
+                height: 300px;
+                width: 200px;
                 background-image: url("../images/sk8er-4.png");
+                background-position: center right, center;
                 border:5px solid #fff;
                 background-size: cover;
                 background-repeat: no-repeat;
                 overflow: hidden;
-                margin-top: 15px;
+                margin-top: 20px;
+                @include span-columns(4 of 12);
 
                 .lance-h1 {
                     color: #fff;
                     text-transform: uppercase;
-                    font-size: 34px;
+                    font-size: 2.0em;
                     text-align: center;
                 }
             }
 
             &.mullen {
+                height: 300px;
+                width: 200px;
                 background-image: url("../images/sk8er-3.png");
                 border:5px solid #fff;
                 background-size: cover;
                 background-repeat: no-repeat;
                 overflow: hidden;
-                margin-top: 15px;
+                margin-top: 20px;
+                @include span-columns(4 of 12);
 
                 .rodney-h1 {
                     color: #fff;
                     text-transform: uppercase;
-                    font-size: 35px;
+                    font-size: 2.0em;
                     text-align: center;
                 }
             }
 
-            @media all and (max-width: 640px) {
-                @include span-columns(12);
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
+            // @media all and (max-width: 640px) {
+            //     @include span-columns(12);
+            //
+            //     img {
+            //         width: 100%;
+            //         height: 100%;
+            //     }
+            // }
         }
 
         .steve-box {
+            height: 300px;
+            width: 200px;
+            background-position: center right, center;
             background-image: url("../images/sk8er-1.png");
-            padding: 13%;
-            background-position: center;
+            // padding: 13%;
+            // background-position: center;
             background-size: 100%;
             background-repeat: no-repeat;
             overflow: hidden;
-            margin-top: 15px;
+            margin-top: 20px;
             border:5px solid #fff;
-            @include span-columns(12);
+            // margin-top: 335px;
+            // position: absolute;
+            @include span-columns(8);
 
             .steve-h1 {
                 color: #fff;
                 text-transform: uppercase;
-                font-size: 35px;
+                font-size: 2.5em;
                 text-align: center;
             }
 
@@ -248,31 +265,41 @@ li p {
 
 .tommy-box {
     background-image: url("../images/sk8er-2.png");
-    padding: 19.5% 0;
+    // padding: 19% 0;
+    height: 500px;
+    width: 330px;
     background-position: center right, center;
     background-size: cover;
     background-repeat: no-repeat;
     border:5px solid #fff;
-    margin-top: 15px;
-    margin-left: 24px;
-    @include span-columns(4);
+    margin-top: 20px;
+    // margin-left: 24px;
+    float: right;
+    position: relative;
+    // @include span-columns(12);
 
     .tommy-h1 {
         color: #fff;
         text-transform: uppercase;
-        font-size: 35px;
+        font-size: 2.5em;
         text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        @include media($mobile) {
+            @include span-columns(12);
+            @include omega(4n);
+        }
     }
-
-
 }
 
 .board-container {
     margin-top: 20px;
     height: 296px;
     width: $max-width;
-    @include outer-container;
-    @include span-columns(12);
+    // @include outer-container;
+    // @include span-columns(12);
+    border-bottom: 5px solid $primary-color;
     background-color: #fff;
 
     .skateboard-image {
@@ -285,16 +312,64 @@ li p {
 
 .contact-container {
     height: 260px;
-    margin-top: 15px;
+    margin-top: 20px;
     width: $max-width;
     background-color: #fff;
-    @include outer-container;
-    @include span-columns(12);
+    border-bottom: 5px solid $primary-color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    // @include outer-container;
+    // @include span-columns(12);
 
 }
 
-.pure-form {
+.form {
     float: right;
-    margin-right: 25px;
-    width: 350px;
+    margin-right: 100px;
+    margin-top: 30px;
+}
+
+button {
+    background-color: $secondary-color;
+    margin-left: 249px;
+}
+
+.contact-paragraph {
+    width: 400px;
+    margin-left: 100px;
+    font-family: "Cabin", "sans-serif";
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    h1 {
+        font-family: "Cabin", "sans-serif";
+        font-size: 1.7em;
+        margin-bottom: 15px;
+        margin-top: 40px;
+    }
+}
+
+.icons {
+    margin-left: 210px;
+    margin-top: 20px;
+    font-size: 2.0em;
+
+    .fa-facebook-square{
+        color: $third-color;
+        text-decoration: none;
+    }
+
+    .fa-twitter-square{
+        color: $fifth-color;
+        text-decoration: none;
+    }
+
+    .fa-google-plus-square{
+        color: $forth-color;
+        text-decoration: none;
+    }
+
+    .fa-github-square{
+        text-decoration: none;
+    }
 }
