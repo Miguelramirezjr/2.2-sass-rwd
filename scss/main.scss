@@ -1,375 +1,522 @@
-@import 'reset';
-@import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
-@import '../bower_components/neat/app/assets/stylesheets/neat';
+$primary-color: RGBA(179, 41, 46, 1);
+$secondary-color: RGBA(255, 255, 255, 1);
+$third-color: RGBA(7, 7, 7, 1);
+$fourth-color: RGBA(62, 94, 150, 1);
+$fifth-color: RGBA(212, 85, 60, 1);
+$sixth-color: RGBA(68, 182, 238, 1);
+$seventh-color: RGBA(50, 49, 49, 1);
 
-$max-width: 1024px !global;
-$visual-grid: true;
-$gutter: em(10) !global
+$gutter: modular-scale(1, .3em, $golden) !default;
+$visual-grid: false !default;
+@import "../bower_components/neat/app/assets/stylesheets/neat";
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 
-$mobile: new-breakpoint(max-width 640px);
-
-$tablet: new-breakpoint(max-width 1024px min-width 641px);
-
-$primary-color: RGBA(96, 96, 96, 1); // GRAY BACKGROUND COLOR //
-$secondary-color: RGBA(179, 51, 46, 1); // RED COLOR //
-$third-color: RGBA(68, 88, 151, 1); // FACEBOOK //
-$forth-color: RGBA(211,67,49,1); // GOOGLE PLUS //
-$fifth-color: RGBA(105, 141, 199, 1); // TWITTER //
-$seventh-color: RGBA(254, 254, 254, 1); // PARAGRAPHS //
-$eigth-color: RGBA(160, 160, 160, 1); // PARAGRAPH BODY TEXT COLOR //
-$ninth-color: RGBA(51, 51, 47, 1); // MAIN PARAGRAPH HEADING COLOR //
+$small-desktop: new-breakpoint(max-width 1150px min-width 926px 9);
+$large-tablet: new-breakpoint(max-width 925px min-width 769px 9);
+$mobile: new-breakpoint(max-width 768px min-width 481px 4);
+$small-mobile: new-breakpoint(max-width 480px 4);
 
 body {
-    background-repeat: no-repeat;
-    background-size: 100%;
+    @include outer-container;
+    background-image: url("../images/bg-1.jpg");
     background-size: cover;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/bg-1.jpg");
+
+    @include media($large-tablet) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @include media($mobile) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    @include media($small-mobile) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
-ul{
+ul li {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-li p {
-     color: white;
-     text-align: center;
-     padding-top: 5%;
-     margin: 0;
+.main-container {
+    @include outer-container(1024px);
+    @include clearfix;
 }
 
-%max-width {
-    max-width: $max-width;
-    margin: 0 auto;
-}
-
-.container {
-    @extend %max-width;
-    @include outer-container;
-}
-
-.top-nav {
-    margin-top: 85px;
-
-    &-nav {
-        display: inline-block;
-        width: 100%;
-    }
-
-    &-boxes {
-        display: inline-block;
-        width: 100%;
-        width: $max-width;
-
-        .box {
-            @include span-columns(3);
-            height: 48px;
-            text-transform: uppercase;
-            font-family: "Cabin", "sans-serif";
-            border-bottom: 5px solid $primary-color;
-            background-color: $secondary-color;
-            cursor: pointer;
-
-            @include media($mobile) {
-                @include omega(1n);
-                margin-bottom: 12px;
-                margin-left: 180px;
-            }
-        }
-    }
-}
-
-.hero {
-    height: 359px;
-    border: white 8px solid;
-    margin-top: 40px;
-    background-image: url("../images/top-image.png");
-    background-size: 120%;
-    background-repeat: no-repeat;
-    position: relative;
-
-    &::before {
-        content: "";
-        position: absolute;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-        background-image: url(../images/grid.png);
-    }
-
-    img {
-        position: relative;
-        padding-top: 50px;
-        padding-left: 20px;
-        z-index: 1;
-
-        @include media($mobile) {
-            margin-left: 60px;
-        }
-    }
-}
-
-.paragraphs {
-    height: 357px;
-    margin-top: 70px;
-    border-bottom: 5px solid $primary-color;
-}
-
-.para1,
-.para2,
-.para3 {
-     @include span-columns(4 of 12);
-     height: 353px;
-     background-color: $seventh-color;
-     text-overflow: ellipsis;
-     overflow: hidden;
-
-     @include media($mobile) {
-         @include span-columns(11 of 12);
-         margin-bottom: 15px;
-         margin-left: 20px;
-     }
-}
-
-.headline1 {
-    color: $ninth-color;
-    font-size: 1.5em;
-    text-align: left;
-    padding-top: 30px;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.date {
-    color: $eigth-color;
-    font-size: 0.9em;
-    padding-top: 10px;
-    text-align: left;
-    padding-left: 45px;
-}
-
-.content {
-    color: $eigth-color;
-    font-size: 0.9em;
-    text-align: left;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 20px;
-}
-
-.read-more {
-    font-family: "Cabin", "sans-serif";
-    color: $secondary-color;
-    text-align: center;
-    padding-top: 30px;
+/*
+ NAV BAR AT TOP OF SITE
+*/
+.topnav {
+    width: 1024px;
+    padding-left: 3px;
     cursor: pointer;
 }
 
-.skater {
-    height: 622px;
-     @include outer-container;
-
-    .left-side-box {
-        // @include span-columns(4 of 12);
-        // @include  span-columns(11);
-        // @include outer-container;
-
-        // @media all and (max-width: 640px) {
-        //     @include span-columns(12);
-        // }
-
-        .item {
-            // @include span-columns(12);
-            // padding: 15% 0;
-            // background-position: center;
-            // background-size: 100%;
-
-
-            &.mountain {
-                height: 300px;
-                width: 200px;
-                background-image: url("../images/sk8er-4.png");
-                background-position: center right, center;
-                border:5px solid #fff;
-                background-size: cover;
-                background-repeat: no-repeat;
-                overflow: hidden;
-                margin-top: 20px;
-                @include span-columns(4 of 12);
-
-                .lance-h1 {
-                    color: #fff;
-                    text-transform: uppercase;
-                    font-size: 2.0em;
-                    text-align: center;
-                }
-            }
-
-            &.mullen {
-                height: 300px;
-                width: 200px;
-                background-image: url("../images/sk8er-3.png");
-                border:5px solid #fff;
-                background-size: cover;
-                background-repeat: no-repeat;
-                overflow: hidden;
-                margin-top: 20px;
-                @include span-columns(4 of 12);
-
-                .rodney-h1 {
-                    color: #fff;
-                    text-transform: uppercase;
-                    font-size: 2.0em;
-                    text-align: center;
-                }
-            }
-
-            // @media all and (max-width: 640px) {
-            //     @include span-columns(12);
-            //
-            //     img {
-            //         width: 100%;
-            //         height: 100%;
-            //     }
-            // }
-        }
-
-        .steve-box {
-            height: 300px;
-            width: 200px;
-            background-position: center right, center;
-            background-image: url("../images/sk8er-1.png");
-            // padding: 13%;
-            // background-position: center;
-            background-size: 100%;
-            background-repeat: no-repeat;
-            overflow: hidden;
-            margin-top: 20px;
-            border:5px solid #fff;
-            // margin-top: 335px;
-            // position: absolute;
-            @include span-columns(8);
-
-            .steve-h1 {
-                color: #fff;
-                text-transform: uppercase;
-                font-size: 2.5em;
-                text-align: center;
-            }
-
-        }
-    }
-
+.topnav li {
+    display: inline-block;
+    @include span-columns(3);
+    margin-top: 50px;
+    @include clearfix;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 15px;
 }
 
-.tommy-box {
-    background-image: url("../images/sk8er-2.png");
-    // padding: 19% 0;
-    height: 500px;
-    width: 330px;
-    background-position: center right, center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border:5px solid #fff;
-    margin-top: 20px;
-    // margin-left: 24px;
-    float: right;
-    position: relative;
-    // @include span-columns(12);
+.button1,
+.button2,
+.button3,
+.button4 {
+    background-color: $primary-color;
+    width: 100%;
+    text-transform: uppercase;
+    color: $secondary-color;
+    height: em(45);
+    padding: 0;
+    font-family: "Ubuntu", "sans-serif";
+    cursor: pointer;
+    box-shadow: 0 8px 6px -6px $third-color;
+    @include clearfix;
 
-    .tommy-h1 {
-        color: #fff;
+    @include media($large-tablet) {
+        @include span-columns(2);
+        @include omega(2n);
+        margin-left: 130px;
+    }
+
+    @include media($mobile) {
+        @include span-columns(2);
+        @include omega(2n);
+        margin-left: 85px;
+    }
+
+    @include media($small-mobile) {
+        @include span-columns(2);
+        @include omega(1n);
+        margin-left: 115px;
+    }
+}
+
+/*
+ MAIN PICTURE AND LOGO HEADER
+*/
+.main-header {
+    height: em(362);
+    @include span-columns(12);
+    margin-top: 24px;
+    margin-bottom: 30px;
+    border: 7px solid $secondary-color;
+    box-shadow: 0 8px 6px -6px $third-color;
+}
+
+.banner {
+    @include span-columns(12 of 12);
+    height: em(349);
+    background-image: url("../images/top-image.png");
+    background-position: 27% 28%;
+
+    @include media($small-mobile) {
+        background-position: center 20% 20%;
+        background-size: cover;
+    }
+}
+
+.overlay {
+    position: absolute;
+    opacity: .50;
+    height: 353px;
+    width: 1014px;
+}
+
+.banner-logo {
+    position: relative;
+    padding-left: 15px;
+    padding-top: 60px;
+    vertical-align: middle;
+
+    @include media($small-mobile) {
+        width: 250px;
+    }
+}
+
+/*
+3 PARAGRAPHS IN MIDDLE OF SITE
+*/
+.articles {
+    line-height: 1rem;
+    margin-top: 10px;
+    @include clearfix;
+}
+
+.article {
+    @include span-columns(4);
+    background: $secondary-color;
+    padding: 20px;
+    @include clearfix;
+    position: relative;
+    box-shadow: 0 8px 6px -6px $third-color;
+
+    @include media($mobile) {
+        @include span-columns(4);
+        height: 240px;
+        margin-bottom: 20px;
+        overflow: scroll;
+    }
+
+    @include media($small-mobile) {
+        @include span-columns(4);
+        height: 200px;
+        overflow: scroll;
+        margin-bottom: 20px;
+    }
+}
+
+.article-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: normal;
+    line-height: 1rem;
+    overflow: scroll;
+    font-family: "Ubuntu", "sans-serif";
+}
+
+.article-date {
+    margin: 0;
+    line-height: 3rem;
+    font-family: "Ubuntu", "sans-serif";
+}
+
+.article-text {
+    margin: 0;
+    font-size: .65rem;
+    line-height: 1rem;
+    overflow: scroll;
+    font-family: "Ubuntu", "sans-serif";
+}
+
+.article-wrapper {
+    height: 255px;
+    overflow: hidden;
+    @include clearfix;
+
+    @include media($mobile) {
+        height: 125px;
+    }
+
+    @include media($small-mobile) {
+        height: 125px;
+    }
+}
+
+.read-more-link {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    color: $primary-color;
+    font-weight: bold;
+    padding-top: 10px;
+    cursor: pointer;
+    font-family: "Ubuntu", "sans-serif";
+}
+/*
+ SKATER IMAGES
+*/
+
+.skater-pics {
+    @include span-columns(12);
+    margin-top: em(37);
+}
+
+.lance-mountain {
+    @include span-columns(4 of 12);
+    background-image: url("../images/sk8er-4.png");
+    height: em(236);
+    background-position: right;
+    border: 4px solid $secondary-color;
+    background-repeat: no-repeat;
+
+    & h1 {
+        color: $secondary-color;
         text-transform: uppercase;
-        font-size: 2.5em;
+        font-family: "Archivo Black", "sans-serif";
+        font-size: 40px;
         text-align: center;
-        text-overflow: ellipsis;
-        overflow: hidden;
+        padding-top: 30px;
 
         @include media($mobile) {
-            @include span-columns(12);
-            @include omega(4n);
+            padding-top: 30px;
         }
     }
-}
 
-.board-container {
-    margin-top: 20px;
-    height: 296px;
-    width: $max-width;
-    // @include outer-container;
-    // @include span-columns(12);
-    border-bottom: 5px solid $primary-color;
-    background-color: #fff;
-
-    .skateboard-image {
-        padding: 15px;
-        margin-left: 5px;
-        margin-top: 5px;
+    @include media($mobile) {
+        @include span-columns(4);
+        height: 200px;
+        background-position: center 20% 20%;
+        background-size: cover;
+        margin-bottom: 20px;
     }
 
+    @include media($small-mobile) {
+        @include span-columns(4);
+        height: 180px;
+        background-position: center;
+        margin-bottom: 20px;
+    }
 }
 
-.contact-container {
-    height: 260px;
-    margin-top: 20px;
-    width: $max-width;
-    background-color: #fff;
-    border-bottom: 5px solid $primary-color;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    // @include outer-container;
-    // @include span-columns(12);
+.rodney-mullen {
+    @include span-columns(4 of 12);
+    background-image: url("../images/sk8er-3.png");
+    height: em(236);
+    border: 4px solid $secondary-color;
+    background-repeat: no-repeat;
 
+    & h1 {
+        color: $secondary-color;
+        text-transform: uppercase;
+        font-family: "Archivo Black", "sans-serif";
+        font-size: 40px;
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    @include media($mobile) {
+        @include span-columns(4);
+        height: 200px;
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 20px;
+    }
+
+    @include media($small-mobile) {
+        @include span-columns(4);
+        height: 180px;
+        background-size: cover;
+        margin-bottom: 20px;
+    }
 }
 
-.form {
+.tommy-guerrero {
+    @include span-columns(4 of 12);
+    background-image: url("../images/sk8er-2.png");
+    @include omega();
+    height: em(478);
+    background-position: 79%;
+    border: 4px solid $secondary-color;
     float: right;
-    margin-right: 100px;
-    margin-top: 30px;
+    margin-bottom: em(27);
+    background-repeat: no-repeat;
+
+    & h1 {
+        color: $secondary-color;
+        text-transform: uppercase;
+        font-family: "Archivo Black", "sans-serif";
+        font-size: 40px;
+        text-align: center;
+        padding-top: 150px;
+
+        @include media($mobile) {
+            padding: 30px;
+        }
+
+        @include media($small-mobile) {
+            @include span-columns(4);
+            padding-top: 20px;
+        }
+    }
+
+    @include media($mobile) {
+        @include span-columns(4);
+        height: 200px;
+    }
+
+    @include media($small-mobile) {
+        @include span-columns(4);
+        height: 180px;
+    }
 }
 
-button {
+.steve-caballero {
+    @include span-columns(8 of 12);
+    background-image: url("../images/sk8er-1.png");
+    height: em(236);
+    border: 4px solid $secondary-color;
+    margin-top: em(6);
+    margin-bottom: em(27);
+    background-position: 23% 48%;
+    background-repeat: no-repeat;
+
+    & h1 {
+        color: $secondary-color;
+        text-transform: uppercase;
+        font-family: "Archivo Black", "sans-serif";
+        font-size: 40px;
+        text-align: center;
+        padding-top: 50px;
+
+        @include media($mobile) {
+              padding-top: 30px;
+        }
+
+        @include media($small-mobile) {
+            @include span-columns(4);
+            padding-top: 20px;
+        }
+    }
+
+    @include media($mobile) {
+        @include span-columns(4);
+        height: 200px;
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 20px;
+    }
+
+    @include media($small-mobile) {
+        @include span-columns(4);
+        margin-top: .3em;
+        height: 180px;
+    }
+}
+/*
+ SKATEBOARDS
+*/
+.skateboards {
+    display: inline-block;
+    background-color: RGBA(253, 253, 253, 1);
+    width: 100%;
+    box-shadow: 0 8px 6px -6px $third-color;
+
+    @include media($large-tablet) {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
+    @include media($mobile) {
+        @include span-columns(4);
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+  @include media($small-mobile) {
+        @include span-columns(4);
+        height: 600px;
+        padding-left: 70px;
+        padding-right: 50px;
+        overflow: scroll;
+    }
+}
+
+.skateboard-list {
+    display: inline-block;
+    list-style: none;
+    padding-left: 16.5px;
+    padding-right: 10px;
+    margin: 0;
+
+    .boards {
+        height: em(299);
+        background-color: $secondary-color;
+    }
+}
+/*
+ CONTACT US FOOTER
+*/
+.contact-us {
+    height: em(365);
     background-color: $secondary-color;
-    margin-left: 249px;
-}
+    margin-top: em(31);
+    box-shadow: 0 8px 6px -6px $third-color;
 
-.contact-paragraph {
-    width: 400px;
-    margin-left: 100px;
-    font-family: "Cabin", "sans-serif";
-    text-overflow: ellipsis;
-    overflow: hidden;
+    @include media($mobile) {
+        @include span-columns(4);
+        height: 700px;
+    }
 
-    h1 {
-        font-family: "Cabin", "sans-serif";
-        font-size: 1.7em;
-        margin-bottom: 15px;
-        margin-top: 40px;
+    @include media($small-mobile) {
+        @include span-columns(4);
+        height: 700px;
     }
 }
 
-.icons {
-    margin-left: 210px;
-    margin-top: 20px;
-    font-size: 2.0em;
+.more-information {
+    font-family: "Ubuntu", "sans-serif";
+    margin: 0;
+    padding-left: 50px;
+    padding-top: 30px;
+    @include span-columns (6 of 12);
 
-    .fa-facebook-square{
-        color: $third-color;
-        text-decoration: none;
+    @include media($mobile) {
+        @include span-columns(3);
+        margin-left: 80px;
     }
 
-    .fa-twitter-square{
+    @include media($small-mobile) {
+        @include span-columns(4);
+        padding-right: 41px;
+    }
+}
+
+.action-form {
+    @include span-columns (6 of 12);
+    float: right;
+    padding-left: 40px;
+    padding-top: 45px;
+
+    @include media($large-tablet) {
+        padding-left: 10px;
+    }
+
+    @include media($mobile) {
+        @include span-columns(4);
+        margin-left: 130px;
+    }
+
+    @include media($small-mobile) {
+        @include span-columns(4);
+        padding-left: 21px;
+    }
+}
+
+.submit-button {
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-transform: uppercase;
+    margin-left: 259px;
+    margin-top: 10px;
+}
+
+.sm-buttons {
+    margin-left: 130px;
+    margin-top: 50px;
+
+    .fa-facebook-square {
+        color: $fourth-color;
+    }
+
+    .fa-google-plus-square {
         color: $fifth-color;
-        text-decoration: none;
     }
 
-    .fa-google-plus-square{
-        color: $forth-color;
-        text-decoration: none;
+    .fa-twitter-square {
+        color: $sixth-color;
     }
 
-    .fa-github-square{
-        text-decoration: none;
+    .fa-github-square {
+        color: $seventh-color;
+    }
+
+    @include media($mobile) {
+        margin-left: 170px;
+    }
+
+    @include media($small-mobile) {
+        margin-left: 100px;
     }
 }
